@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca5cefa6b9dbcb46824eb56a68bde71, type: 3}
+  m_Name: WalkUp
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationData
+  animationName: WalkUp
+  frames:
+  - {fileID: -2670100242169240431, guid: 93fb777b1a7500a47b73a41a3908454a, type: 3}
+  - {fileID: -6690175258641898058, guid: 93fb777b1a7500a47b73a41a3908454a, type: 3}
+  - {fileID: 4091235918760648666, guid: 93fb777b1a7500a47b73a41a3908454a, type: 3}
+  - {fileID: -2605162699692701695, guid: 93fb777b1a7500a47b73a41a3908454a, type: 3}
+  frameDelay: 0.1
+  loop: 1
