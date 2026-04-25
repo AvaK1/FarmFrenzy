@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1ac59deee49bb4798e6f359ea487bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pest
-  attackDamage: 4
+  attackDamage: 2
   attackSpeed: 0.8
   health: 10
 --- !u!50 &2189997574244850485

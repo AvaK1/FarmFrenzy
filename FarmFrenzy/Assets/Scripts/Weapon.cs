@@ -10,17 +10,23 @@ public class Weapon : MonoBehaviour
     //a gameobject will be spawned, and it will deal damage and knockback to any pest that enters its range. then, it will be destroyed
     //that gameobject will handle the collisions
     [SerializeField] public string weaponName = "Pitchfork";
+    [SerializeField] public string weaponDescription = "Stabs towards enemies.";
     [SerializeField] public float attackSpeed = 5;
+    [Header("Dmg Interval for dealing dmg over time, not all weapons")]
+    [SerializeField] public float damageInterval = 0.2f;
     [SerializeField] public float weaponAliveTime = 0.2f;
     [SerializeField] public int damage = 5;
     [SerializeField] public int projectileNumber = 1;
     [SerializeField] public int knockback = 1;
     [SerializeField] public GameObject prefab;
+    [SerializeField] public Sprite icon;
     public List<GameObject> weaponInstances = new List<GameObject>();
+    public AudioSource weaponSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        weaponSound = GetComponent<AudioSource>();
         if (projectileNumber <= 0)
         {
             projectileNumber = 1;
@@ -33,6 +39,7 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < projectileNumber; i++)
         {
             weaponInstances.Add(Instantiate(prefab, transform.position, transform.rotation, transform)); //this will be instantiated at the player's position
+            weaponSound.Play();
             yield return StartCoroutine(DestroyWeapon());
         }
         yield return new WaitForSeconds(attackSpeed);

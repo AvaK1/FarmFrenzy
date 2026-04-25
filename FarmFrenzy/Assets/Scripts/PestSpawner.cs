@@ -16,7 +16,7 @@ public class PestSpawner : MonoBehaviour
     private float currentPestCount;
 
     private int changeCounter = 0; //counter will be added to each time enemies spawn, and once it reaches a certain point, it will trigger the increase of enemies, decrease of time between intervals, and change the pests that are spawning
-    private int changeNumber = 8; //when the counter gets to this number, it will trigger the changes
+    [SerializeField] private int changeNumber = 8; //when the counter gets to this number, it will trigger the changes
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +43,10 @@ public class PestSpawner : MonoBehaviour
             changeCounter = 0;
             currentSpawnInterval -= timeBetweenIntervalDecrease;
             currentPestCount += countIncrease;
+            if (currentPestIndex < pestPrefabs.Count - numOfPestTypesPerWave)
+            {
+                currentPestIndex++;
+            }
         }
 
         yield return new WaitForSeconds(currentSpawnInterval);

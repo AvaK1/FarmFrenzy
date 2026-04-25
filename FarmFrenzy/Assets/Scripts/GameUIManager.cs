@@ -9,6 +9,7 @@ public class GameUIManager : UIManager
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMP_Text timeText, healthText, pestsKilledText;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject weaponBoxPanel;
 
     private void Awake()
     {
@@ -67,5 +68,19 @@ public class GameUIManager : UIManager
     {
         pestsKilledText.text = "Pests killed: " + GameManager.Instance.pestsKilled.ToString();
         healthText.text = "Health: " + playerController.playerHealth.ToString();
+    }
+
+    public void OpenOrCloseWeaponBox()
+    {
+        if (!weaponBoxPanel.activeSelf)
+        {
+            weaponBoxPanel.GetComponent<WeaponBoxUI>().OpenBox();
+            weaponBoxPanel.SetActive(true);
+        }
+        else
+        {
+            weaponBoxPanel.SetActive(false);
+        }
+        PauseOrResumeGame(weaponBoxPanel);
     }
 }

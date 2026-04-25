@@ -41,12 +41,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6531553553237102679}
   - component: {fileID: 3896869449403456513}
-  - component: {fileID: 6661636753483739492}
   - component: {fileID: 1127184953318729375}
-  - component: {fileID: 8762109139895730960}
   - component: {fileID: 7330201133473142702}
   - component: {fileID: 4026608470722944574}
   - component: {fileID: 2408954382185835200}
+  - component: {fileID: 6661636753483739492}
+  - component: {fileID: 8762109139895730960}
   - component: {fileID: 6595974245354643327}
   - component: {fileID: 4780924859853241333}
   m_Layer: 0
@@ -132,70 +132,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &6661636753483739492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033183888331761187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b1e460eabc5a2642a367d0bf86f4c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  playerHealth: 10
-  moveInput:
-    m_Name: Move Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 029c79b1-15d2-43b1-b157-65a9e6261257
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: 12a81d2f-d577-4615-af89-08c123fcb927
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 4
-    - m_Name: up
-      m_Id: d8246751-87d0-45e9-8bba-4932308bf07e
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: ddb02e3e-d576-4aea-be29-e611879a6ca1
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 7500b4f9-a91f-4bce-a689-2a066ce70811
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: f22f13b7-8a79-42ec-8d6c-9ddfe1cb180e
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    m_Flags: 0
-  moveSpeed: 100
-  deadPlayerPrefab: {fileID: 1840762524473847643, guid: ca5f135dd191f4a4e8430c0419b2c2de, type: 3}
 --- !u!50 &1127184953318729375
 Rigidbody2D:
   serializedVersion: 5
@@ -223,20 +159,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8762109139895730960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033183888331761187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67e51b11a4d9ee479b7365a69ec568b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
-  allWeapons:
-  - {fileID: 3338561644088896989, guid: 51ebf64aad3fa694d980904cbb43a15b, type: 3}
 --- !u!61 &7330201133473142702
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -341,6 +263,85 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6661636753483739492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033183888331761187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1e460eabc5a2642a367d0bf86f4c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  playerHealth: 10
+  moveInput:
+    m_Name: Move Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 029c79b1-15d2-43b1-b157-65a9e6261257
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 12a81d2f-d577-4615-af89-08c123fcb927
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 4
+    - m_Name: up
+      m_Id: d8246751-87d0-45e9-8bba-4932308bf07e
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: down
+      m_Id: ddb02e3e-d576-4aea-be29-e611879a6ca1
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 7500b4f9-a91f-4bce-a689-2a066ce70811
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: right
+      m_Id: f22f13b7-8a79-42ec-8d6c-9ddfe1cb180e
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    m_Flags: 0
+  moveSpeed: 100
+  deadPlayerPrefab: {fileID: 1840762524473847643, guid: ca5f135dd191f4a4e8430c0419b2c2de, type: 3}
+--- !u!114 &8762109139895730960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033183888331761187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67e51b11a4d9ee479b7365a69ec568b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
+  allWeapons:
+  - {fileID: 3338561644088896989, guid: 51ebf64aad3fa694d980904cbb43a15b, type: 3}
+  - {fileID: 3338561644088896989, guid: 6ad7548f7d7e12843ac9098145f5d0db, type: 3}
 --- !u!114 &6595974245354643327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,8 +643,8 @@ MonoBehaviour:
   - {fileID: 3871674110330951155}
   - {fileID: 3361823686857368894}
   - {fileID: 1599999838783838669}
-  startingSpawnInterval: 15
-  startingSpawnCount: 2
+  startingSpawnInterval: 5
+  startingSpawnCount: 5
   timeBetweenIntervalDecrease: 0.1
   countIncrease: 1
 --- !u!1 &8901206021882082710

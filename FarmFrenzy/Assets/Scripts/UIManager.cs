@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public abstract class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject settingsPanel;
-    private bool timePaused;
 
     private void Start()
     {
@@ -22,17 +21,15 @@ public abstract class UIManager : MonoBehaviour
         PauseOrResumeGame(settingsPanel);
     }
 
-    public void PauseOrResumeGame(GameObject panel)
+    public virtual void PauseOrResumeGame(GameObject panel) //stops/resumes gametime
     {
         if (panel.activeSelf)
         {
             Time.timeScale = 0.0f;
-            timePaused = true;
         }
         else
         {
             Time.timeScale = 1.0f;
-            timePaused = false;
         }
     }
 

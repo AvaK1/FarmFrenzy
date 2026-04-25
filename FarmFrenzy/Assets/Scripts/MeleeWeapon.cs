@@ -4,6 +4,8 @@ using UnityEngine;
 public class MeleeWeapon : Weapon
 {
     [SerializeField] public float distanceMultiplier = 1.5f;
+    [SerializeField] public bool movesWithPlayer = true;
+
     public override IEnumerator SpawnWeapon()
     {
         for (int i = 0; i < projectileNumber; i++)
@@ -25,10 +27,12 @@ public class MeleeWeapon : Weapon
                 nearestPestPosition = GameManager.Instance.livingPests[closestPestIndex].transform.position;
             }
 
+            GameObject newInstance;
             //Spawning the weapon
             Vector3 pestDirection = nearestPestPosition - GetComponentInParent<Transform>().position;
-            GameObject newInstance = Instantiate(prefab, transform.position + pestDirection.normalized * distanceMultiplier, transform.rotation, transform); //this will be instantiated at the player's position
+            newInstance = Instantiate(prefab, transform.position + pestDirection.normalized * distanceMultiplier, transform.rotation, transform); //this will be instantiated at the player's position, with this script's object as its parent
 
+            //rotates the weapon
             Vector3 target = GetComponentInParent<Transform>().position;
             target.z = 0;
             target.x = target.x - nearestPestPosition.x;
@@ -36,7 +40,8 @@ public class MeleeWeapon : Weapon
             float rotationAngle = (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg) - 270;
             newInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
 
-            weaponInstances.Add(newInstance); 
+            weaponInstances.Add(newInstance);
+            weaponSound.Play();
             yield return StartCoroutine(DestroyWeapon());
         }
         yield return new WaitForSeconds(attackSpeed);

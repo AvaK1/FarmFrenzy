@@ -67,22 +67,21 @@ public class Crop : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (currentCropState == CropState.Harvestable)
-        {
-            if (other.CompareTag("Weapon")) //when one thing is interacting with other things, they should all have their own unique way of interacting with it, but they can inherit from a basic interaction
-                //the thing that is interacting with other things should be the one checking for the trigger
-            {
-                Harvest();
-            }
-        }
-    }
-
-    private void Harvest()
+    public void Harvest()
     {
         //give player xp + chance for an item
         SetState(CropState.Grown);
+        spriteRenderer.sprite = sprites[1];
+
+        if (GameManager.Instance.cropHarvestCount == 3)
+        {
+            GameManager.Instance.SpawnWeaponBox(gameObject.transform.position);
+            GameManager.Instance.cropHarvestCount = 0;
+        }
+        else
+        {
+            GameManager.Instance.cropHarvestCount++;
+        }
     }
 
     public void Die()

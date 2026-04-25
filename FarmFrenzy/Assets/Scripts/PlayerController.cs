@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Crop;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1.0f;
 
     public event Action<Vector2> OnMove; //change this to be InputSystem_Actions
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rbody;
     [SerializeField] private GameObject deadPlayerPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
         moveInput.Enable();
         moveInput.performed += GetMoveVector;
         moveInput.canceled += GetMoveVector;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rbody = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(int damage)
@@ -42,6 +43,24 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Crop"))
+        {
+            Crop crop = collision.GetComponent<Crop>();
+            if (crop.currentCropState == CropState.Harvestable)
+            {
+                crop.Harvest();
+            }
+        }
+
+        if (collision.CompareTag("WeaponBox"))
+        {
+            GameUIManager.Instance.OpenOrCloseWeaponBox();
+            Destroy(collision.gameObject);
+        }
+    }
+
     #region movement
     public void GetMoveVector(InputAction.CallbackContext context)
     {
@@ -52,7 +71,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rigidbody.linearVelocity = movementDirection.normalized * moveSpeed * Time.deltaTime;
+        rbody.linearVelocity = movementDirection.normalized * moveSpeed * Time.deltaTime;
     }
     #endregion
 }

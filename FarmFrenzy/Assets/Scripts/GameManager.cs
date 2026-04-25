@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> livingPests = new List<GameObject>();
     public int pestsKilled = 0;
     public float startTime;
+    [SerializeField] private GameObject weaponBoxPrefab;
+    public int cropHarvestCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,5 +67,10 @@ public class GameManager : MonoBehaviour
                 livingCrops.Add(crop);
             }
         }
+    }
+
+    public void SpawnWeaponBox(Vector3 position)
+    {
+        Instantiate(weaponBoxPrefab, position, Quaternion.identity);
     }
 }

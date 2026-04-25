@@ -7,7 +7,7 @@ public class Pest : MonoBehaviour
     //Pest needs: the ability to kill crops, move towards the player, get killed, and despawn (if the player goes far enough away (for larger maps))
     //need to have it so that large numbers of enemies don't lag the game
     [SerializeField] public int attackDamage = 4;
-    [SerializeField] public float attackSpeed = 0.6f;
+    [SerializeField] public float attackSpeed = 1;
     [SerializeField] public int health = 10;
     private NavMeshAgent navAgent;
     private GameObject targetObject;
@@ -82,11 +82,6 @@ public class Pest : MonoBehaviour
             targetObject = player;
             navAgent.SetDestination(targetObject.transform.position);
         }
-    }
-
-    void FixedUpdate()
-    {
-        //GetComponent<Rigidbody>().linearVelocity = movementDirection.normalized * currentMoveSpeed * Time.deltaTime;
     }
 
     //when the pest enters the trigger of a crop, it will check if the pest is currently killing a crop, if the crop is in livingCrops, and isn't currently being killed by a pest. Then, it will be moved to the middle, the crop will be labelled as occupied, and its movement speed will be set to zero. it will start a coroutine that waits a few seconds (killing the crop) and checks if the pest still has health before killing the crop. 
